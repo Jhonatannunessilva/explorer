@@ -1,0 +1,2868 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.4">
+    <meta name="project" content="Explorer v0.5.8-dev">
+
+    <title>Explorer.Backend.DataFrame — Explorer v0.5.8-dev</title>
+    <link rel="stylesheet" href="dist/html-elixir-HHVY3JYD.css" />
+
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-XWGFFSCD.js"></script>
+    <script src="dist/sidebar_items-38A026CC.js"></script>
+
+      <script src="docs_config.js"></script>
+
+    <script async src="dist/html-JDI3AVDD.js"></script>
+
+
+  </head>
+  <body data-type="modules" class="page-behaviour">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="Explorer.html">
+        <img src="assets/logo.png" alt="Explorer" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="Explorer.html" class="sidebar-projectName" translate="no">
+Explorer
+      </a>
+      <div class="sidebar-projectVersion" translate="no">
+        v0.5.8-dev
+      </div>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="icon-action display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L1" title="View Source" class="icon-action" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span translate="no">Explorer.Backend.DataFrame</span> <small>behaviour</small>
+  <small class="app-vsn" translate="no">(Explorer v0.5.8-dev)</small>
+
+</h1>
+
+
+  <section id="moduledoc">
+<p>The behaviour for DataFrame backends.</p>
+  </section>
+
+
+  <section id="summary" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+      Summary
+    </h1>
+<div class="summary-types summary">
+  <h2>
+    <a href="#types">Types</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:basic_types/0" translate="no">basic_types()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:column_name/0" translate="no">column_name()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:columns_for_io/0" translate="no">columns_for_io()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:compression/0" translate="no">compression()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:df/0" translate="no">df()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:dtype/0" translate="no">dtype()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:dtypes/0" translate="no">dtypes()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:lazy_frame/0" translate="no">lazy_frame()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:lazy_series/0" translate="no">lazy_series()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:mutate_value/0" translate="no">mutate_value()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:ok_result/0" translate="no">ok_result()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:option/1" translate="no">option(type)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:result/1" translate="no">result(t)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:series/0" translate="no">series()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:t/0" translate="no">t()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-callbacks summary">
+  <h2>
+    <a href="#callbacks">Callbacks</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:arrange_with/3" translate="no">arrange_with(df, out_df, directions)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:collect/1" translate="no">collect(df)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:concat_columns/2" translate="no">concat_columns(list, out_df)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:concat_rows/2" translate="no">concat_rows(list, out_df)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:describe/2" translate="no">describe(df, percentiles)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:distinct/3" translate="no">distinct(df, out_df, columns)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:drop_nil/2" translate="no">drop_nil(df, columns)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:dummies/3" translate="no">dummies(df, out_df, columns)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:dump_csv/3" translate="no">dump_csv(df, header?, delimiter)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:dump_ipc/2" translate="no">dump_ipc(df, compression)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:dump_ipc_stream/2" translate="no">dump_ipc_stream(df, compression)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:dump_ndjson/1" translate="no">dump_ndjson(df)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:dump_parquet/2" translate="no">dump_parquet(df, compression)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:filter_with/3" translate="no">filter_with(df, out_df, lazy_series)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:from_csv/12" translate="no">from_csv(
+  filename,
+  dtypes,
+  delimiter,
+  null_character,
+  skip_rows,
+  header?,
+  encoding,
+  max_rows,
+  columns,
+  infer_schema_length,
+  parse_dates,
+  eol_delimiter
+)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:from_ipc/2" translate="no">from_ipc(filename, columns)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:from_ipc_stream/2" translate="no">from_ipc_stream(filename, columns)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:from_ndjson/3" translate="no">from_ndjson(filename, infer_schema_length, batch_size)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:from_parquet/3" translate="no">from_parquet(filename, max_rows, columns)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:from_series/1" translate="no">from_series(list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:from_tabular/2" translate="no">from_tabular(t, dtypes)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:head/2" translate="no">head(df, rows)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:inspect/2" translate="no">inspect(df, opts)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:join/5" translate="no">join(left, right, out_df, on, how)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:lazy/0" translate="no">lazy()</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:load_csv/12" translate="no">load_csv(
+  contents,
+  dtypes,
+  delimiter,
+  null_character,
+  skip_rows,
+  header?,
+  encoding,
+  max_rows,
+  columns,
+  infer_schema_length,
+  parse_dates,
+  eol_delimiter
+)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:load_ipc/2" translate="no">load_ipc(contents, columns)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:load_ipc_stream/2" translate="no">load_ipc_stream(contents, columns)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:load_ndjson/3" translate="no">load_ndjson(contents, infer_schema_length, batch_size)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:load_parquet/1" translate="no">load_parquet(contents)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:mask/2" translate="no">mask(df, mask)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:mutate_with/3" translate="no">mutate_with(df, out_df, mutations)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:n_rows/1" translate="no">n_rows(df)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:pivot_longer/6" translate="no">pivot_longer(df, out_df, columns_to_pivot, columns_to_keep, names_to, values_to)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:pivot_wider/5" translate="no">pivot_wider(df, id_columns, names_from, values_from, names_prefix)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:pull/2" translate="no">pull(df, column)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:put/4" translate="no">put(df, out_df, column_name, series)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:rename/3" translate="no">rename(df, out_df, list)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:sample/5" translate="no">sample(df, n_or_frac, replace, shuffle, seed)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:select/2" translate="no">select(df, out_df)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:slice/2" translate="no">slice(df, indices)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:slice/3" translate="no">slice(df, offset, length)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:summarise_with/3" translate="no">summarise_with(df, out_df, aggregations)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:tail/2" translate="no">tail(df, rows)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:to_csv/4" translate="no">to_csv(df, filename, header?, delimiter)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:to_ipc/4" translate="no">to_ipc(df, filename, compression, streaming)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:to_ipc_stream/3" translate="no">to_ipc_stream(df, filename, compression)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:to_lazy/1" translate="no">to_lazy(df)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:to_ndjson/2" translate="no">to_ndjson(df, filename)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:to_parquet/4" translate="no">to_parquet(df, filename, compression, streaming)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:to_rows/2" translate="no">to_rows(df, atom_keys?)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#c:to_rows_stream/3" translate="no">to_rows_stream(df, atom_keys?, chunk_size)</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h2>
+    <a href="#functions">Functions</a>
+  </h2>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#inspect/5" translate="no">inspect(df, backend, n_rows, inspect_opts, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Default inspect implementation for backends.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#new/3" translate="no">new(data, names, dtypes)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Creates a new DataFrame for a given backend.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Types
+    </h1>
+    <div class="types-list">
+<section class="detail" id="t:basic_types/0">
+
+  <div class="detail-header">
+    <a href="#t:basic_types/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">basic_types()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L19" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> basic_types() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | <a href="https://hexdocs.pm/elixir/Date.html#t:t/0">Date.t</a>() | <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:column_name/0">
+
+  <div class="detail-header">
+    <a href="#t:column_name/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">column_name()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L15" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> column_name() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:columns_for_io/0">
+
+  <div class="detail-header">
+    <a href="#t:columns_for_io/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">columns_for_io()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L30" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> columns_for_io() :: [<a href="#t:column_name/0">column_name</a>()] | [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()] | nil</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:compression/0">
+
+  <div class="detail-header">
+    <a href="#t:compression/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">compression()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L29" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> compression() :: {algorithm :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()), level :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>())}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:df/0">
+
+  <div class="detail-header">
+    <a href="#t:df/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">df()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L8" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> df() :: <a href="Explorer.DataFrame.html#t:t/0">Explorer.DataFrame.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:dtype/0">
+
+  <div class="detail-header">
+    <a href="#t:dtype/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">dtype()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L16" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> dtype() :: <a href="Explorer.Series.html#t:dtype/0">Explorer.Series.dtype</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:dtypes/0">
+
+  <div class="detail-header">
+    <a href="#t:dtypes/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">dtypes()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L17" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> dtypes() :: %{required(<a href="#t:column_name/0">column_name</a>()) =&gt; <a href="#t:dtype/0">dtype</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:lazy_frame/0">
+
+  <div class="detail-header">
+    <a href="#t:lazy_frame/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">lazy_frame()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L26" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> lazy_frame() :: <a href="Explorer.Backend.LazyFrame.html#t:t/0">Explorer.Backend.LazyFrame.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:lazy_series/0">
+
+  <div class="detail-header">
+    <a href="#t:lazy_series/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">lazy_series()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L27" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> lazy_series() :: <a href="Explorer.Backend.LazySeries.html#t:t/0">Explorer.Backend.LazySeries.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:mutate_value/0">
+
+  <div class="detail-header">
+    <a href="#t:mutate_value/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">mutate_value()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L20" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> mutate_value() ::
+  <a href="#t:series/0">series</a>()
+  | <a href="#t:basic_types/0">basic_types</a>()
+  | [<a href="#t:basic_types/0">basic_types</a>()]
+  | (<a href="#t:df/0">df</a>() -&gt; <a href="#t:series/0">series</a>() | <a href="#t:basic_types/0">basic_types</a>() | [<a href="#t:basic_types/0">basic_types</a>()])</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:ok_result/0">
+
+  <div class="detail-header">
+    <a href="#t:ok_result/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">ok_result()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L11" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> ok_result() :: :ok | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:option/1">
+
+  <div class="detail-header">
+    <a href="#t:option/1" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">option(type)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L10" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> option(type) :: type | nil</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:result/1">
+
+  <div class="detail-header">
+    <a href="#t:result/1" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">result(t)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L12" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> result(t) :: {:ok, t} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:series/0">
+
+  <div class="detail-header">
+    <a href="#t:series/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">series()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L14" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> series() :: <a href="Explorer.Series.html#t:t/0">Explorer.Series.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L6" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">struct</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="callbacks" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#callbacks">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Callbacks
+    </h1>
+    <div class="callbacks-list">
+<section class="detail" id="c:arrange_with/3">
+
+  <div class="detail-header">
+    <a href="#c:arrange_with/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">arrange_with(df, out_df, directions)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L151" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> arrange_with(
+  <a href="#t:df/0">df</a>(),
+  out_df :: <a href="#t:df/0">df</a>(),
+  directions :: [{:asc | :desc, <a href="#t:lazy_series/0">lazy_series</a>()}]
+) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:collect/1">
+
+  <div class="detail-header">
+    <a href="#c:collect/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">collect(df)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L132" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> collect(<a href="#t:df/0">df</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:concat_columns/2">
+
+  <div class="detail-header">
+    <a href="#c:concat_columns/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">concat_columns(list, out_df)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L194" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> concat_columns([<a href="#t:df/0">df</a>()], out_df :: <a href="#t:df/0">df</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:concat_rows/2">
+
+  <div class="detail-header">
+    <a href="#c:concat_rows/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">concat_rows(list, out_df)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L195" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> concat_rows([<a href="#t:df/0">df</a>()], out_df :: <a href="#t:df/0">df</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:describe/2">
+
+  <div class="detail-header">
+    <a href="#c:describe/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">describe(df, percentiles)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L182" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> describe(<a href="#t:df/0">df</a>(), percentiles :: <a href="#t:option/1">option</a>([<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()])) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:distinct/3">
+
+  <div class="detail-header">
+    <a href="#c:distinct/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">distinct(df, out_df, columns)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L152" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> distinct(<a href="#t:df/0">df</a>(), out_df :: <a href="#t:df/0">df</a>(), columns :: [<a href="#t:column_name/0">column_name</a>()]) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:drop_nil/2">
+
+  <div class="detail-header">
+    <a href="#c:drop_nil/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">drop_nil(df, columns)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L165" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> drop_nil(<a href="#t:df/0">df</a>(), columns :: [<a href="#t:column_name/0">column_name</a>()]) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:dummies/3">
+
+  <div class="detail-header">
+    <a href="#c:dummies/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">dummies(df, out_df, columns)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L154" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> dummies(<a href="#t:df/0">df</a>(), out_df :: <a href="#t:df/0">df</a>(), columns :: [<a href="#t:column_name/0">column_name</a>()]) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:dump_csv/3">
+
+  <div class="detail-header">
+    <a href="#c:dump_csv/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">dump_csv(df, header?, delimiter)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L49" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> dump_csv(<a href="#t:df/0">df</a>(), header? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(), delimiter :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="#t:result/1">result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:dump_ipc/2">
+
+  <div class="detail-header">
+    <a href="#c:dump_ipc/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">dump_ipc(df, compression)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L89" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> dump_ipc(<a href="#t:df/0">df</a>(), <a href="#t:compression/0">compression</a>()) :: <a href="#t:result/1">result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:dump_ipc_stream/2">
+
+  <div class="detail-header">
+    <a href="#c:dump_ipc_stream/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">dump_ipc_stream(df, compression)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L106" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> dump_ipc_stream(<a href="#t:df/0">df</a>(), <a href="#t:compression/0">compression</a>()) :: <a href="#t:result/1">result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:dump_ndjson/1">
+
+  <div class="detail-header">
+    <a href="#c:dump_ndjson/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">dump_ndjson(df)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L120" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> dump_ndjson(<a href="#t:df/0">df</a>()) :: <a href="#t:result/1">result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:dump_parquet/2">
+
+  <div class="detail-header">
+    <a href="#c:dump_parquet/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">dump_parquet(df, compression)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L79" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> dump_parquet(<a href="#t:df/0">df</a>(), <a href="#t:compression/0">compression</a>()) :: <a href="#t:result/1">result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:filter_with/3">
+
+  <div class="detail-header">
+    <a href="#c:filter_with/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">filter_with(df, out_df, lazy_series)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L149" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> filter_with(<a href="#t:df/0">df</a>(), out_df :: <a href="#t:df/0">df</a>(), <a href="#t:lazy_series/0">lazy_series</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:from_csv/12">
+
+  <div class="detail-header">
+    <a href="#c:from_csv/12" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">from_csv(
+  filename,
+  dtypes,
+  delimiter,
+  null_character,
+  skip_rows,
+  header?,
+  encoding,
+  max_rows,
+  columns,
+  infer_schema_length,
+  parse_dates,
+  eol_delimiter
+)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L46" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> from_csv(
+  filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="#t:dtypes/0">dtypes</a>(),
+  delimiter :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  null_character :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  skip_rows :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  header? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  encoding :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  max_rows :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()),
+  columns :: <a href="#t:columns_for_io/0">columns_for_io</a>(),
+  infer_schema_length :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()),
+  parse_dates :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  eol_delimiter :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>())
+) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:from_ipc/2">
+
+  <div class="detail-header">
+    <a href="#c:from_ipc/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">from_ipc(filename, columns)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L86" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> from_ipc(
+  filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  columns :: <a href="#t:columns_for_io/0">columns_for_io</a>()
+) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:from_ipc_stream/2">
+
+  <div class="detail-header">
+    <a href="#c:from_ipc_stream/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">from_ipc_stream(filename, columns)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L99" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> from_ipc_stream(
+  filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  columns :: <a href="#t:columns_for_io/0">columns_for_io</a>()
+) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:from_ndjson/3">
+
+  <div class="detail-header">
+    <a href="#c:from_ndjson/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">from_ndjson(filename, infer_schema_length, batch_size)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L117" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> from_ndjson(
+  filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  infer_schema_length :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  batch_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()
+) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:from_parquet/3">
+
+  <div class="detail-header">
+    <a href="#c:from_parquet/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">from_parquet(filename, max_rows, columns)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L71" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> from_parquet(
+  filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  max_rows :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()),
+  columns :: <a href="#t:columns_for_io/0">columns_for_io</a>()
+) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:from_series/1">
+
+  <div class="detail-header">
+    <a href="#c:from_series/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">from_series(list)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L134" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> from_series([{<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), Series.t()}]) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:from_tabular/2">
+
+  <div class="detail-header">
+    <a href="#c:from_tabular/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">from_tabular(t, dtypes)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L133" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> from_tabular(<a href="https://hexdocs.pm/table/0.1.2/Table.Reader.html#t:t/0">Table.Reader.t</a>(), <a href="#t:dtypes/0">dtypes</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:head/2">
+
+  <div class="detail-header">
+    <a href="#c:head/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">head(df, rows)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L145" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> head(<a href="#t:df/0">df</a>(), rows :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:inspect/2">
+
+  <div class="detail-header">
+    <a href="#c:inspect/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">inspect(df, opts)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L141" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> inspect(<a href="#t:df/0">df</a>(), opts :: <a href="https://hexdocs.pm/elixir/Inspect.Opts.html#t:t/0">Inspect.Opts.t</a>()) :: <a href="https://hexdocs.pm/elixir/Inspect.Algebra.html#t:t/0">Inspect.Algebra.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:join/5">
+
+  <div class="detail-header">
+    <a href="#c:join/5" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">join(left, right, out_df, on, how)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L192" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> join(
+  left :: <a href="#t:df/0">df</a>(),
+  right :: <a href="#t:df/0">df</a>(),
+  out_df :: <a href="#t:df/0">df</a>(),
+  on :: [{<a href="#t:column_name/0">column_name</a>(), <a href="#t:column_name/0">column_name</a>()}],
+  how :: :left | :inner | :outer | :right | :cross
+) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:lazy/0">
+
+  <div class="detail-header">
+    <a href="#c:lazy/0" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">lazy()</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L130" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> lazy() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:load_csv/12">
+
+  <div class="detail-header">
+    <a href="#c:load_csv/12" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">load_csv(
+  contents,
+  dtypes,
+  delimiter,
+  null_character,
+  skip_rows,
+  header?,
+  encoding,
+  max_rows,
+  columns,
+  infer_schema_length,
+  parse_dates,
+  eol_delimiter
+)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L64" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> load_csv(
+  contents :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="#t:dtypes/0">dtypes</a>(),
+  delimiter :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  null_character :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  skip_rows :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  header? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  encoding :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  max_rows :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()),
+  columns :: <a href="#t:columns_for_io/0">columns_for_io</a>(),
+  infer_schema_length :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()),
+  parse_dates :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  eol_delimiter :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>())
+) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:load_ipc/2">
+
+  <div class="detail-header">
+    <a href="#c:load_ipc/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">load_ipc(contents, columns)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L93" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> load_ipc(
+  contents :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+  columns :: <a href="#t:columns_for_io/0">columns_for_io</a>()
+) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:load_ipc_stream/2">
+
+  <div class="detail-header">
+    <a href="#c:load_ipc_stream/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">load_ipc_stream(contents, columns)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L110" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> load_ipc_stream(
+  contents :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(),
+  columns :: <a href="#t:columns_for_io/0">columns_for_io</a>()
+) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:load_ndjson/3">
+
+  <div class="detail-header">
+    <a href="#c:load_ndjson/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">load_ndjson(contents, infer_schema_length, batch_size)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L126" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> load_ndjson(
+  contents :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  infer_schema_length :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  batch_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()
+) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:load_parquet/1">
+
+  <div class="detail-header">
+    <a href="#c:load_parquet/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">load_parquet(contents)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L80" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> load_parquet(contents :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) :: <a href="#t:result/1">result</a>(<a href="#t:df/0">df</a>())</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:mask/2">
+
+  <div class="detail-header">
+    <a href="#c:mask/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">mask(df, mask)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L148" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> mask(<a href="#t:df/0">df</a>(), mask :: <a href="#t:series/0">series</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:mutate_with/3">
+
+  <div class="detail-header">
+    <a href="#c:mutate_with/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">mutate_with(df, out_df, mutations)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L150" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> mutate_with(<a href="#t:df/0">df</a>(), out_df :: <a href="#t:df/0">df</a>(), mutations :: [{<a href="#t:column_name/0">column_name</a>(), <a href="#t:lazy_series/0">lazy_series</a>()}]) ::
+  <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:n_rows/1">
+
+  <div class="detail-header">
+    <a href="#c:n_rows/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">n_rows(df)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L140" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> n_rows(<a href="#t:df/0">df</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:pivot_longer/6">
+
+  <div class="detail-header">
+    <a href="#c:pivot_longer/6" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">pivot_longer(df, out_df, columns_to_pivot, columns_to_keep, names_to, values_to)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L180" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> pivot_longer(
+  <a href="#t:df/0">df</a>(),
+  out_df :: <a href="#t:df/0">df</a>(),
+  columns_to_pivot :: [<a href="#t:column_name/0">column_name</a>()],
+  columns_to_keep :: [<a href="#t:column_name/0">column_name</a>()],
+  names_to :: <a href="#t:column_name/0">column_name</a>(),
+  values_to :: <a href="#t:column_name/0">column_name</a>()
+) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:pivot_wider/5">
+
+  <div class="detail-header">
+    <a href="#c:pivot_wider/5" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">pivot_wider(df, id_columns, names_from, values_from, names_prefix)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L172" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> pivot_wider(
+  <a href="#t:df/0">df</a>(),
+  id_columns :: [<a href="#t:column_name/0">column_name</a>()],
+  names_from :: <a href="#t:column_name/0">column_name</a>(),
+  values_from :: [<a href="#t:column_name/0">column_name</a>()],
+  names_prefix :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()
+) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:pull/2">
+
+  <div class="detail-header">
+    <a href="#c:pull/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">pull(df, column)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L162" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> pull(<a href="#t:df/0">df</a>(), column :: <a href="#t:column_name/0">column_name</a>()) :: <a href="#t:series/0">series</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:put/4">
+
+  <div class="detail-header">
+    <a href="#c:put/4" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">put(df, out_df, column_name, series)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L181" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> put(<a href="#t:df/0">df</a>(), out_df :: <a href="#t:df/0">df</a>(), <a href="#t:column_name/0">column_name</a>(), <a href="#t:series/0">series</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:rename/3">
+
+  <div class="detail-header">
+    <a href="#c:rename/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">rename(df, out_df, list)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L153" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> rename(<a href="#t:df/0">df</a>(), out_df :: <a href="#t:df/0">df</a>(), [{old :: <a href="#t:column_name/0">column_name</a>(), new :: <a href="#t:column_name/0">column_name</a>()}]) ::
+  <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:sample/5">
+
+  <div class="detail-header">
+    <a href="#c:sample/5" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">sample(df, n_or_frac, replace, shuffle, seed)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L161" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> sample(
+  <a href="#t:df/0">df</a>(),
+  n_or_frac :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(),
+  replace :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  shuffle :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  seed :: <a href="#t:option/1">option</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>())
+) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:select/2">
+
+  <div class="detail-header">
+    <a href="#c:select/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">select(df, out_df)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L147" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> select(<a href="#t:df/0">df</a>(), out_df :: <a href="#t:df/0">df</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:slice/2">
+
+  <div class="detail-header">
+    <a href="#c:slice/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">slice(df, indices)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L163" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> slice(
+  <a href="#t:df/0">df</a>(),
+  indices ::
+    [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()] | <a href="#t:series/0">series</a>() | %Range{first: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), last: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), step: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+) ::
+  <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:slice/3">
+
+  <div class="detail-header">
+    <a href="#c:slice/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">slice(df, offset, length)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L164" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> slice(<a href="#t:df/0">df</a>(), offset :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), length :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:summarise_with/3">
+
+  <div class="detail-header">
+    <a href="#c:summarise_with/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">summarise_with(df, out_df, aggregations)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L199" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> summarise_with(
+  <a href="#t:df/0">df</a>(),
+  out_df :: <a href="#t:df/0">df</a>(),
+  aggregations :: [{<a href="#t:column_name/0">column_name</a>(), <a href="#t:lazy_series/0">lazy_series</a>()}]
+) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:tail/2">
+
+  <div class="detail-header">
+    <a href="#c:tail/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">tail(df, rows)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L146" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> tail(<a href="#t:df/0">df</a>(), rows :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:to_csv/4">
+
+  <div class="detail-header">
+    <a href="#c:to_csv/4" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">to_csv(df, filename, header?, delimiter)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L47" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> to_csv(
+  <a href="#t:df/0">df</a>(),
+  filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  header? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(),
+  delimiter :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()
+) :: <a href="#t:ok_result/0">ok_result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:to_ipc/4">
+
+  <div class="detail-header">
+    <a href="#c:to_ipc/4" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">to_ipc(df, filename, compression, streaming)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L87" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> to_ipc(<a href="#t:df/0">df</a>(), filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="#t:compression/0">compression</a>(), streaming :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) ::
+  <a href="#t:ok_result/0">ok_result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:to_ipc_stream/3">
+
+  <div class="detail-header">
+    <a href="#c:to_ipc_stream/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">to_ipc_stream(df, filename, compression)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L104" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> to_ipc_stream(
+  <a href="#t:df/0">df</a>(),
+  filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="#t:compression/0">compression</a>()
+) :: <a href="#t:ok_result/0">ok_result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:to_lazy/1">
+
+  <div class="detail-header">
+    <a href="#c:to_lazy/1" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">to_lazy(df)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L131" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> to_lazy(<a href="#t:df/0">df</a>()) :: <a href="#t:df/0">df</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:to_ndjson/2">
+
+  <div class="detail-header">
+    <a href="#c:to_ndjson/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">to_ndjson(df, filename)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L118" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> to_ndjson(<a href="#t:df/0">df</a>(), filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:ok_result/0">ok_result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:to_parquet/4">
+
+  <div class="detail-header">
+    <a href="#c:to_parquet/4" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">to_parquet(df, filename, compression, streaming)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L77" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> to_parquet(
+  <a href="#t:df/0">df</a>(),
+  filename :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="#t:compression/0">compression</a>(),
+  streaming :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+) :: <a href="#t:ok_result/0">ok_result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:to_rows/2">
+
+  <div class="detail-header">
+    <a href="#c:to_rows/2" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">to_rows(df, atom_keys?)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L135" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> to_rows(<a href="#t:df/0">df</a>(), atom_keys? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()) :: [<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()]</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="c:to_rows_stream/3">
+
+  <div class="detail-header">
+    <a href="#c:to_rows_stream/3" class="detail-link" title="Link to this callback">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature" translate="no">to_rows_stream(df, atom_keys?, chunk_size)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L136" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@callback</span> to_rows_stream(<a href="#t:df/0">df</a>(), atom_keys? :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(), chunk_size :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()) ::
+  <a href="https://hexdocs.pm/elixir/Enumerable.html#t:t/0">Enumerable.t</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h1 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+        <span class="sr-only">Link to this section</span>
+      </a>
+Functions
+    </h1>
+    <div class="functions-list">
+<section class="detail" id="inspect/5">
+
+    <span id="inspect/4"></span>
+
+  <div class="detail-header">
+    <a href="#inspect/5" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">inspect(df, backend, n_rows, inspect_opts, opts \\ [])</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L224" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Default inspect implementation for backends.</p>
+  </section>
+</section>
+<section class="detail" id="new/3">
+
+  <div class="detail-header">
+    <a href="#new/3" class="detail-link" title="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature" translate="no">new(data, names, dtypes)</h1>
+
+      <a href="https://github.com/elixir-nx/explorer/blob/v0.5.8-dev/lib/explorer/backend/data_frame.ex#L208" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+<p>Creates a new DataFrame for a given backend.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+      <footer class="footer">
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/explorer/0.5.8-dev" class="footer-hex-package">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/explorer/0.5.8-dev">Hex Preview</a>
+
+                (<a href="https://preview.hex.pm/preview/explorer/0.5.8-dev/show/lib/explorer/backend/data_frame.ex">current file</a>)
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Search HexDocs packages">
+              Search HexDocs
+            </button>
+
+              <a href="Explorer.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.4) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
